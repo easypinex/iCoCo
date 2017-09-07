@@ -39,8 +39,8 @@ public class ctbcData
 
             if (CTBCMode)
             {
-                new CTBC_BonusPointInq().execute(Token);
                 new CTBC_SavingAcctInq().execute(Token);
+                new CTBC_BonusPointInq().execute(Token);
             }
             else if (EmulationMode)
             {
