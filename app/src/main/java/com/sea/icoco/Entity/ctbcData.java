@@ -44,8 +44,8 @@ public class ctbcData
             }
             else if (EmulationMode)
             {
-                new BonusPointInq().execute(Token);
                 new SavingAcctInq().execute(Token);
+                new BonusPointInq().execute(Token);
             }
 
             loginSuccess = true;
