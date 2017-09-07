@@ -47,7 +47,6 @@ public class ctbcData
                 new SavingAcctInq().execute(Token);
                 new BonusPointInq().execute(Token);
             }
-
             loginSuccess = true;
 //            Log.d("Debug CTBC Data","Get CTBC Token Success");
         }
