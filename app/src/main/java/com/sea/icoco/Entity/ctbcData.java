@@ -27,8 +27,8 @@ public class ctbcData
     boolean loginSuccess = false;
     private DataControler dataControler = MainActivity.dataControler;
 
-    boolean CTBCMode = false;
-    boolean EmulationMode = true;
+    boolean CTBCMode = dataControler.CTBCMode;
+    boolean EmulationMode = dataControler.EmulationMode;
 
     public void setToken(JSONObject jsonObject) throws JSONException
     {
