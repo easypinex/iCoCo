@@ -84,10 +84,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             {
                 try {
                     JSONObject shop  = dataControler.shopData.getShopData().getJSONObject(i);
-                    mMap.addMarker(new MarkerOptions()
-                            .position(new LatLng(Double.parseDouble(shop.getString("latitude")), Double.parseDouble(shop.getString("longitude"))))
-                            .title(shop.getString("shop_name"))
-                            .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("restaurant",100,100))));
+                    String type = shop.getString("type");
+                    if (type.equals("shop")){
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Double.parseDouble(shop.getString("latitude")), Double.parseDouble(shop.getString("longitude"))))
+                                .title(shop.getString("shop_name"))
+                                .snippet("您的Go點數可以在此折抵 15 元 餐飲費 !")
+                                .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("restaurant",100,100))));
+                    }else if (type.equals("sport")){
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Double.parseDouble(shop.getString("latitude")), Double.parseDouble(shop.getString("longitude"))))
+                                .title(shop.getString("shop_name"))
+                                .snippet("您的Go點數可以在此折抵 34 元 門票費 !")
+                                .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("runner",100,100))));
+                    }else if (type.equals("parking")){
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Double.parseDouble(shop.getString("latitude")), Double.parseDouble(shop.getString("longitude"))))
+                                .title(shop.getString("shop_name"))
+                                .snippet("您的Go點數可以在此折抵 28 元 停車費 !")
+                                .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("parking",100,100))));
+                    }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

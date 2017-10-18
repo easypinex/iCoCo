@@ -285,12 +285,12 @@ public class gpsData
             if (MainActivity.initMapActivity)
             {
                 MapsActivity.mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
-                MapsActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+                MapsActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
             }
             if (MainActivity.initDiaryMapActivity)
             {
                 DiaryMapsActivity.mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
-                DiaryMapsActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
+                DiaryMapsActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
             }
         }
     }
