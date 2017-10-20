@@ -31,6 +31,9 @@ public class ShopReceiveActivity extends AppCompatActivity
     ImageView imageView;
     TextView name_txv;
     Button receuve_btn;
+    boolean EmulationMode = dataControler.EmulationMode;
+    boolean CTBCMode = dataControler.CTBCMode;
+    boolean ESUNMode = dataControler.ESUNMode;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -71,64 +74,71 @@ public class ShopReceiveActivity extends AppCompatActivity
                 try{
                     final String receive_money = receive_money_edt.getText().toString();
                     String payerUid = qrData.getString("uid");
-
-                    class SelectPayerData extends MySQL_Select
+                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權成功\n\n即將返回選單").setNegativeButton("OK", new DialogInterface.OnClickListener()
                     {
                         @Override
-                        protected void onPostExecute(String result) {
-                            Log.d("debug","result = "+result);
-                            if(!result.equals("[]"))
-                            {
-                                try {
-                                    JSONObject payerData = new JSONArray(result).getJSONObject(0);
-                                    String cardNo = payerData.getString("cardNo");
-//                                                                      String expDate = payerData.getString("expDate");
-                                    String expDate = "1221";
-                                    String TransactionDescChinese = "iCoCo O2O付款";
-
-                                    class receive extends CTBC_Shop_CreditCardAuthorize
-                                    {
-                                        @Override
-                                        protected void onPostExecute(String result) {
-                                            try {
-                                                Log.d("debug",result.toString());
-                                                JSONObject recevieData = new JSONObject(result);
-
-                                                if (recevieData.getString("ResponseCode").equals("0000"))
-                                                {
-                                                    Log.d("Debug Shop","Receive Success !!");
-                                                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權成功\n\n即將返回選單").setNegativeButton("OK", new DialogInterface.OnClickListener()
-                                                    {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which)
-                                                        {
-                                                            ShopReceiveActivity.this.finish();
-                                                        }
-                                                    }).setCancelable(false).show();
-
-                                                }
-                                                else
-                                                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權失敗").setNegativeButton("OK",null).show();
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    }
-
-                                    new receive().execute(cardNo,expDate,receive_money,TransactionDescChinese);
-
-                                } catch (JSONException e) {
-                                    Log.e("Debug","Receive Error"+e.toString());
-                                }
-                            }
-                            else
-                            {
-                                new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("對象尚未綁定信用卡").setNegativeButton("OK",null).show();
-                            }
+                        public void onClick(DialogInterface dialog, int which)
+                        {
+                            ShopReceiveActivity.this.finish();
                         }
-                    }
+                    }).setCancelable(false).show();
+
+//                    class SelectPayerData extends MySQL_Select
+//                    {
+//                        @Override
+//                        protected void onPostExecute(String result) {
+//                            Log.d("debug","result = "+result);
+//                            if(!result.equals("[]"))
+//                            {
+//                                try {
+//                                    JSONObject payerData = new JSONArray(result).getJSONObject(0);
+//                                    String cardNo = payerData.getString("cardNo");
+////                                                                      String expDate = payerData.getString("expDate");
+//                                    String expDate = "1221";
+//                                    String TransactionDescChinese = "iCoCo O2O付款";
+//                                    class receive extends CTBC_Shop_CreditCardAuthorize
+//                                    {
+//                                        @Override
+//                                        protected void onPostExecute(String result) {
+//                                            try {
+//                                                Log.d("debug",result.toString());
+//                                                JSONObject recevieData = new JSONObject(result);
+//
+//                                                if (recevieData.getString("ResponseCode").equals("0000"))
+//                                                {
+//                                                    Log.d("Debug Shop","Receive Success !!");
+//                                                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權成功\n\n即將返回選單").setNegativeButton("OK", new DialogInterface.OnClickListener()
+//                                                    {
+//                                                        @Override
+//                                                        public void onClick(DialogInterface dialog, int which)
+//                                                        {
+//                                                            ShopReceiveActivity.this.finish();
+//                                                        }
+//                                                    }).setCancelable(false).show();
+//
+//                                                }
+//                                                else
+//                                                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權失敗").setNegativeButton("OK",null).show();
+//                                            } catch (JSONException e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+//
+//                                    new receive().execute(cardNo,expDate,receive_money,TransactionDescChinese);
+//
+//                                } catch (JSONException e) {
+//                                    Log.e("Debug","Receive Error"+e.toString());
+//                                }
+//                            }
+//                            else
+//                            {
+//                                new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("對象尚未綁定信用卡").setNegativeButton("OK",null).show();
+//                            }
+//                        }
+//                    }
                     String sql = "SELECT cardNo,expDate FROM icoco.usercreditcard where uid = "+payerUid+";";
-                    new SelectPayerData().execute(sql);
+//                    new SelectPayerData().execute(sql);
                     Log.d("debug","result = "+"start");
 
                 }catch (Exception e) { Log.e("Debug","Receive Error"+e.toString()); }

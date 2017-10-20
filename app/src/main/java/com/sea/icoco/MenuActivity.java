@@ -8,19 +8,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sea.icoco.Control.AutoDetectionUpdate;
 import com.sea.icoco.Control.DataControler;
 
-import java.util.Map;
-
 public class MenuActivity extends AppCompatActivity
 {
     DataControler dataControler = MainActivity.dataControler;
-    private ImageView AA_img,transferBounsPoint_img,transferBalance_img,showQRCode_img,budget_img,serachMenu_img;
+    private ImageView AA_img,transferBounsPoint_img,transferBalance_img,showQRCode_img,gopoint_img,serachMenu_img;
     Integer updateSecond = 1;
     ImageView redBall_img;
     TextView redBall_txv;
@@ -139,12 +136,12 @@ public class MenuActivity extends AppCompatActivity
             }
         });
 
-        budget_img.setOnClickListener(new View.OnClickListener()
+        gopoint_img.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(MenuActivity.this,BudgetActivity.class));
+                startActivity(new Intent(MenuActivity.this,GoPointActivity.class));
             }
         });
 
@@ -164,7 +161,7 @@ public class MenuActivity extends AppCompatActivity
         transferBounsPoint_img  = (ImageView) findViewById(R.id.transferBounsPoint_img);
         transferBalance_img = (ImageView) findViewById(R.id.transferBalance_img);
         showQRCode_img = (ImageView) findViewById(R.id.showQRCode_img);
-        budget_img = (ImageView) findViewById(R.id.budget_img);
+        gopoint_img = (ImageView) findViewById(R.id.gopoint_img);
         serachMenu_img = (ImageView) findViewById(R.id.serachMenu_img);
         redBall_img = (ImageView) findViewById(R.id.redBall_img);
         redBall_txv = (TextView) findViewById(R.id.redBall_txv);

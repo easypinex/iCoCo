@@ -39,6 +39,7 @@ public class DataControler
     public static MyDBHelper myDBHelper;
     public static boolean EmulationMode = true,CTBCMode = false,ESUNMode = false;
     public static String server = "220.134.230.193";
+    public static int exchangePoint = 0;
 //    public static String server = "40.83.122.51";
 
     public DataControler(Context context)

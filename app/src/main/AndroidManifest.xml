@@ -82,8 +82,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AA_Activity"
-            android:exported="true"/>
+        <activity
+            android:name=".AA_Activity"
+            android:exported="true" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".LinkCTBCActivity" />
         <activity android:name=".AddCreditCardActivity" />
@@ -106,7 +107,8 @@
         <activity android:name=".TakePictureActivity" />
         <activity
             android:name=".DiaryMapsActivity"
-            android:label="@string/title_activity_diary_maps"></activity>
+            android:label="@string/title_activity_diary_maps" />
+        <activity android:name=".GoPointActivity"></activity>
     </application>
 
 </manifest>

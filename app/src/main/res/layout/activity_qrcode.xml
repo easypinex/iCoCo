@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="150dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/relativeLayout20">
         <ImageView
@@ -27,5 +27,37 @@
             android:nestedScrollingEnabled="false"
             android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/min_txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="75dp"
+        android:layout_toLeftOf="@+id/textView30"
+        android:layout_toStartOf="@+id/textView30"
+        android:text="5"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="："
+        android:textSize="45sp"
+        android:layout_alignBaseline="@+id/min_txv"
+        android:layout_alignBottom="@+id/min_txv"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/sec_txv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView30"
+        android:layout_alignBottom="@+id/textView30"
+        android:layout_toEndOf="@+id/textView30"
+        android:layout_toRightOf="@+id/textView30"
+        android:text="00"
+        android:textSize="45sp" />
 
 </RelativeLayout>

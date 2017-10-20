@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class LinkCTBCActivity extends AppCompatActivity
 {
     private EditText custID_edt,userID_edt,pin_edt;
-    private Button link_btn,linkNoAPI_btn;
+    private Button link_btn;
     private DataControler dataControler = MainActivity.dataControler;
 
     @Override
@@ -40,21 +40,15 @@ public class LinkCTBCActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                if (!custID_edt.getText().toString().isEmpty() && !userID_edt.getText().toString().isEmpty() && !pin_edt.getText().toString().isEmpty())
-                {
-                    new myCTBCLogin().execute(custID_edt.getText().toString(),userID_edt.getText().toString(),pin_edt.getText().toString());
+                if (dataControler.ESUNMode){
+                    if (!custID_edt.getText().toString().isEmpty() && !userID_edt.getText().toString().isEmpty() && !pin_edt.getText().toString().isEmpty())
+                    {
+                        new myCTBCLogin().execute(custID_edt.getText().toString(),userID_edt.getText().toString(),pin_edt.getText().toString());
+                    }
+                }else{
+                    if (!custID_edt.getText().toString().isEmpty() && !userID_edt.getText().toString().isEmpty() && !pin_edt.getText().toString().isEmpty())
+                        new myLogin().execute(custID_edt.getText().toString(),dataControler.userData.getId(),pin_edt.getText().toString());
                 }
-
-            }
-        });
-
-        linkNoAPI_btn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                if (!custID_edt.getText().toString().isEmpty() && !userID_edt.getText().toString().isEmpty() && !pin_edt.getText().toString().isEmpty())
-                    new myLogin().execute(custID_edt.getText().toString(),dataControler.userData.getId(),pin_edt.getText().toString());
             }
         });
     }
@@ -65,7 +59,6 @@ public class LinkCTBCActivity extends AppCompatActivity
         userID_edt = (EditText) findViewById(R.id.userID_edt);
         pin_edt = (EditText) findViewById(R.id.pin_edt);
         link_btn = (Button) findViewById(R.id.link_btn);
-        linkNoAPI_btn = (Button) findViewById(R.id.linkNoAPI_btn);
     }
 
     private class myLogin extends Login

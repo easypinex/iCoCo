@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     private CallbackManager callbackManager;
     private LoginManager loginManager;
 
+
 //    GCM
 //只要把您的GCM註冊ID填入，其他部分皆一樣
     private String SENDER_ID = "292098287069";

@@ -25,9 +25,9 @@ public class userData
     private Intent intent = new Intent();
     private DataControler dataControler = MainActivity.dataControler;
     JSONObject userData = new JSONObject();
-    boolean EmulationMode = false;
-    boolean CTBCMode = false;
-    boolean ESUNMode = true;
+    boolean EmulationMode = dataControler.EmulationMode;
+    boolean CTBCMode = dataControler.CTBCMode;
+    boolean ESUNMode = dataControler.ESUNMode;
 
     public void login(JSONObject jsonObject, Context context,Class c) throws JSONException
     {
