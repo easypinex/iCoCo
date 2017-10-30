@@ -74,7 +74,12 @@ public class ShopReceiveActivity extends AppCompatActivity
                 try{
                     final String receive_money = receive_money_edt.getText().toString();
                     String payerUid = qrData.getString("uid");
-                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權成功\n\n即將返回選單").setNegativeButton("OK", new DialogInterface.OnClickListener()
+                    String pointString = "";
+                    try{
+                        if (qrData.getString("point")!=null) pointString = "使用者蒐集一點!";
+                    }catch (Exception e){}
+
+                    new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("收款資訊").setMessage("信用卡授權成功!!"+pointString+"\n\n即將返回選單").setNegativeButton("OK", new DialogInterface.OnClickListener()
                     {
                         @Override
                         public void onClick(DialogInterface dialog, int which)
@@ -149,11 +154,14 @@ public class ShopReceiveActivity extends AppCompatActivity
 
     private void setViewData()
     {
-        try
-        {
+        try {
             new DownloadImageTask(imageView).execute("https://graph.facebook.com/"+qrData.getString("fbid")+"/picture?type=large");
             name_txv.setText(qrData.getString("name"));
-
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try
+        {
             if(!qrData.getString("coupon").equals("-1"))
             {
 //                Log.d("debug shop","myshop coupon"+dataControler.shopData.getMyShopCoupon_uid().toString());
@@ -173,6 +181,8 @@ public class ShopReceiveActivity extends AppCompatActivity
                 }).setNegativeButton("NO",null).show();
             }
         } catch (JSONException e) { e.printStackTrace(); }
+
+
     }
 
     private void getIntentData()

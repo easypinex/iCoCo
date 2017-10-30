@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     public static boolean initMapActivity = false;
     public static boolean initDiaryMapActivity = false;
+    public static boolean initMapOrderActivity = false;
     private GoogleCloudMessaging gcm;
     private AtomicInteger msgId = new AtomicInteger();
     private Context context = this;

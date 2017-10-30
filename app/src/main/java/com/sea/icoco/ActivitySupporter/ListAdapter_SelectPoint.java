@@ -2,12 +2,10 @@ package com.sea.icoco.ActivitySupporter;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,13 +13,11 @@ import com.sea.icoco.Control.DataControler;
 import com.sea.icoco.MainActivity;
 import com.sea.icoco.R;
 
-import org.json.JSONException;
-
 
 /**
  * Created by AndyChuo on 2016/4/5.
  * 建立自訂義清單:
- *      單一項目利用 list_item 介面元件來建立
+ *      單一項目利用 adapter_list_item 介面元件來建立
  */
 public class ListAdapter_SelectPoint extends BaseAdapter
 {
@@ -56,7 +52,7 @@ public class ListAdapter_SelectPoint extends BaseAdapter
     {
         if(convertView==null)
         {
-            convertView = inflater.inflate(R.layout.selec_point_item, null);
+            convertView = inflater.inflate(R.layout.adapter_selec_point_item, null);
         }
 
         final EditText point_edt = (EditText) convertView.findViewById(R.id.point_edt);

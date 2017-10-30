@@ -1,9 +1,7 @@
 package com.sea.icoco.ActivitySupporter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +21,7 @@ import org.json.JSONObject;
 /**
  * Created by AndyChuo on 2016/4/5.
  * 建立自訂義清單:
- *      單一項目利用 list_item 介面元件來建立
+ *      單一項目利用 adapter_list_item 介面元件來建立
  */
 public class ListAdapter_Coupon extends BaseAdapter
 {
@@ -62,7 +60,7 @@ public class ListAdapter_Coupon extends BaseAdapter
     {
         if(convertView==null)
         {
-            convertView = inflater.inflate(R.layout.coupon_item, null);
+            convertView = inflater.inflate(R.layout.adapter_coupon_item, null);
         }
 
         ImageView news_img = (ImageView) convertView.findViewById(R.id.news_img);

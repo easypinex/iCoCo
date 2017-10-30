@@ -30,7 +30,9 @@ public class MenuActivity extends AppCompatActivity
         setOnClickListener();
         new AutoDetectionUpdate();
         autoUpdateRedBall();
+
     }
+
 
     private void autoUpdateRedBall()
     {
@@ -141,7 +143,7 @@ public class MenuActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                startActivity(new Intent(MenuActivity.this,GoPointActivity.class));
+                startActivity(new Intent(MenuActivity.this,MapsOrderActivity.class));
             }
         });
 

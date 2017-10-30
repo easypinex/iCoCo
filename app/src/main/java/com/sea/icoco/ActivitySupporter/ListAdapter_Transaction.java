@@ -1,14 +1,12 @@
 package com.sea.icoco.ActivitySupporter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sea.icoco.Control.DataControler;
@@ -23,7 +21,7 @@ import org.json.JSONObject;
 /**
  * Created by AndyChuo on 2016/4/5.
  * 建立自訂義清單:
- *      單一項目利用 list_item 介面元件來建立
+ *      單一項目利用 adapter_list_item 介面元件來建立
  */
 public class ListAdapter_Transaction extends BaseAdapter
 {
@@ -60,7 +58,7 @@ public class ListAdapter_Transaction extends BaseAdapter
     {
         if(convertView==null)
         {
-            convertView = inflater.inflate(R.layout.transaction_item, null);
+            convertView = inflater.inflate(R.layout.adapter_transaction_item, null);
         }
 
         TextView Narrative_txv = (TextView) convertView.findViewById(R.id.Narrative_txv);

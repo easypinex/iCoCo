@@ -2,7 +2,6 @@ package com.sea.icoco.ActivitySupporter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +24,7 @@ import java.util.List;
 /**
  * Created by AndyChuo on 2016/4/5.
  *  建立自訂義清單:
- *      單一項目利用 list_item_checkbox 介面元件來建立
+ *      單一項目利用 adapter_list_item_checkbox 介面元件來建立
  */
 public class ListAdapter_checkbox extends BaseAdapter
 {
@@ -63,7 +62,7 @@ public class ListAdapter_checkbox extends BaseAdapter
 
         if(convertView==null)
         {
-            convertView = inflater.inflate(R.layout.list_item_checkbox, null);
+            convertView = inflater.inflate(R.layout.adapter_list_item_checkbox, null);
         }
 
         TextView name_txv = (TextView) convertView.findViewById(R.id.name_txv);

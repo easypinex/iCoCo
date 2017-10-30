@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sea.icoco.DiaryMapsActivity;
 import com.sea.icoco.MainActivity;
 import com.sea.icoco.MapsActivity;
+import com.sea.icoco.MapsOrderActivity;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -291,6 +292,11 @@ public class gpsData
             {
                 DiaryMapsActivity.mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
                 DiaryMapsActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
+            }
+            if (MainActivity.initDiaryMapActivity)
+            {
+                MapsOrderActivity.mMap.moveCamera(CameraUpdateFactory.newLatLng(place));
+                MapsOrderActivity.mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
             }
         }
     }

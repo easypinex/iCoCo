@@ -18,13 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 
 /**
  * Created by AndyChuo on 2016/4/5.
  * 建立自訂義清單:
- *      單一項目利用 list_item 介面元件來建立
+ *      單一項目利用 adapter_list_item 介面元件來建立
  */
 public class ListAdapter_Message extends BaseAdapter
 {
@@ -62,7 +60,7 @@ public class ListAdapter_Message extends BaseAdapter
     {
         if(convertView==null)
         {
-            convertView = inflater.inflate(R.layout.message_item, null);
+            convertView = inflater.inflate(R.layout.adapter_message_item, null);
         }
 
         ImageView news_img = (ImageView) convertView.findViewById(R.id.news_img);
