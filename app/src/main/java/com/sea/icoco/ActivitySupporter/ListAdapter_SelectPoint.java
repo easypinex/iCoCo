@@ -33,6 +33,7 @@ public class ListAdapter_SelectPoint extends BaseAdapter
     {
         activity = a;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        dataControler.exchangePoint = 10;
     }
 
 

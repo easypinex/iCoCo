@@ -33,6 +33,8 @@ public class MySQL_Select extends AsyncTask<String, Void, String>
 //            Log.d("Debug MySQL",sql + " ...");
             String link = "http://"+dataControler.server+"/iCoCo/MySQL_Select.php";
             String data = URLEncoder.encode("sql", "UTF-8") + "=" + URLEncoder.encode(sql, "UTF-8");
+
+
             Log.d("Select debug",sql);
             URL url = new URL(link);
             URLConnection conn = url.openConnection();

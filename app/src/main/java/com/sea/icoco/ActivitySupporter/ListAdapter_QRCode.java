@@ -63,6 +63,12 @@ public class ListAdapter_QRCode extends BaseAdapter
         try {
             final ImageView qr_img = (ImageView) convertView.findViewById(R.id.qr_item_img);
             JSONObject qrJson = new JSONObject();
+            qrJson.put("uid",dataControler.userData.getId());
+            qrJson.put("fbid",dataControler.userData.getFbid());
+            qrJson.put("ac",dataControler.ctbcData.getAc());
+            qrJson.put("bankNo","822");
+            qrJson.put("name",dataControler.userData.getName());
+            qrJson.put("point",point);
             BuilderQRcode BuilderQRcode = new BuilderQRcode(qr_img,qrJson.toString());
             BuilderQRcode.setWidth(250);
             BuilderQRcode.setHeight(250);

@@ -1,7 +1,9 @@
 package com.sea.icoco;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 import com.sea.icoco.Control.AutoDetectionUpdate;
 import com.sea.icoco.Control.DataControler;
 
+import org.json.JSONException;
+
 public class MenuActivity extends AppCompatActivity
 {
     DataControler dataControler = MainActivity.dataControler;
@@ -22,14 +26,14 @@ public class MenuActivity extends AppCompatActivity
     ImageView redBall_img;
     TextView redBall_txv;
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         findView();
         setOnClickListener();
         new AutoDetectionUpdate();
         autoUpdateRedBall();
+        new AlertDialog.Builder(MenuActivity.this).setTitle("歡迎").setMessage("歡迎來到台灣 新北市 !\n\n現在開始走路點數三倍送!!!").setPositiveButton("確定", null).show();
     }
 
     private void autoUpdateRedBall()

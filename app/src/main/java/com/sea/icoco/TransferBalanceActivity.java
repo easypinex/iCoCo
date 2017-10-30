@@ -1,5 +1,6 @@
 package com.sea.icoco;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.sea.icoco.Control.BankAPI.Emulation.Transfer;
 import com.sea.icoco.Control.DataControler;
 import com.sea.icoco.Control.MySQL.MySQL_Execute;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -148,6 +150,16 @@ public class TransferBalanceActivity extends AppCompatActivity
             for (int j=0; j < dataControler.friendsData.getFriendsData().length(); j++)
                 friendsData.add(dataControler.friendsData.getFriendsData().getJSONObject(j).getString("name"));
         } catch (JSONException e) { e.printStackTrace(); }
+
+        JSONArray counpons = new JSONArray();
+        JSONObject coupon1 = new JSONObject();
+        counpons.length();//取長度
+        try {
+            coupon1.put("123","123");
+            counpons.put(coupon1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         ListAdapter adapterItem = new ListAdapter(TransferBalanceActivity.this, friendsData);
 

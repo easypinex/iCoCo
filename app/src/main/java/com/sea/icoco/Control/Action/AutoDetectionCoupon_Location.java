@@ -45,7 +45,7 @@ public class AutoDetectionCoupon_Location
                     JSONObject shop = dataControler.shopData.getShopData().getJSONObject(i);
                     Double shopLongitude = Double.parseDouble(shop.getString("longitude"));
                     Double shopLatitude = Double.parseDouble(shop.getString("latitude"));
-
+                    //優惠劵範圍
                     if (longitude >= (shopLongitude -0.05) && longitude <= (shopLongitude +0.05)
                             && latitude >= (shopLatitude -0.05) && latitude <= (shopLatitude+0.05))
                     {
@@ -128,7 +128,7 @@ public class AutoDetectionCoupon_Location
                     dataControler.couponData.loadCouponData();
                     locked = false;
                     Log.d("debug location","send Coupon locaiton");
-//                    new AlertDialog.Builder(context).setTitle("優惠卷接收狀態").setMessage("接收了 "+String.valueOf(sendCouponList.size())+" 張優惠卷").setNegativeButton("OK",null).show();
+//                    new AlertDialog.Builder(context).setTitle("優惠劵接收狀態").setMessage("接收了 "+String.valueOf(sendCouponList.size())+" 張優惠劵").setNegativeButton("OK",null).show();
                 }
             }
         }

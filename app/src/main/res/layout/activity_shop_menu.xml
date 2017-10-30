@@ -29,7 +29,7 @@
         android:id="@+id/receive_btn"/>
 
     <Button
-        android:text="優惠卷新增"
+        android:text="優惠劵新增"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -27,7 +27,7 @@ public class ShopSummary extends AppCompatActivity {
     TextView shopName_txv,shopAddres_txv;
     String shopUid_str;
     Button coupon_btn;
-    AlertDialog.Builder dialog,qrdialog;
+    AlertDialog.Builder dialog,qrdialog,succDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +64,7 @@ public class ShopSummary extends AppCompatActivity {
                 .setPositiveButton("確定",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        succDialog.show();
                     }
                 })
                 .setAdapter(qradapterItem, new DialogInterface.OnClickListener()
@@ -74,6 +74,9 @@ public class ShopSummary extends AppCompatActivity {
                     {
                     }
                 });
+        succDialog = new AlertDialog.Builder(ShopSummary.this).
+                setTitle("兌換結果")
+                .setPositiveButton("確定",null).setMessage("兌換成功");
     }
 
     @Override

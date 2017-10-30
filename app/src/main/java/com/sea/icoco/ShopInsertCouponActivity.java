@@ -73,7 +73,7 @@ public class ShopInsertCouponActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                boolean mode_budget = (radioGroup.getCheckedRadioButtonId() == R.id.budget_rdo);
+                boolean mode_budget = (radioGroup.getCheckedRadioButtonId() == R.id.budget_rdo); //是否為預算
                 String mode = (mode_budget) ? "month":"location";
                 String uid = dataControler.userData.getId();
                 String couponName = couponName_edt.getText().toString();
@@ -89,8 +89,10 @@ public class ShopInsertCouponActivity extends AppCompatActivity
                     {
                         if(result.equals("true"))
                         {
-                            new AlertDialog.Builder(ShopInsertCouponActivity.this).setTitle("優惠卷上傳資訊").setMessage("優惠卷上傳成功").setNegativeButton("OK", null).show();
+                            new AlertDialog.Builder(ShopInsertCouponActivity.this).setTitle("優惠劵上傳資訊").setMessage("優惠劵上傳成功").setNegativeButton("OK", null).show();
                             dataControler.shopData.loadMyShopCoupon();
+                        }else{
+                            Log.d("debug","應用程式接收失敗"+result);
                         }
                     }
                 }

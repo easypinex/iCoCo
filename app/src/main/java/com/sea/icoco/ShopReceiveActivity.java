@@ -149,18 +149,22 @@ public class ShopReceiveActivity extends AppCompatActivity
 
     private void setViewData()
     {
+        try {
+            new DownloadImageTask(imageView).execute("https://graph.facebook.com/" + qrData.getString("fbid") + "/picture?type=large");
+            name_txv.setText(qrData.getString("name"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         try
         {
-            new DownloadImageTask(imageView).execute("https://graph.facebook.com/"+qrData.getString("fbid")+"/picture?type=large");
-            name_txv.setText(qrData.getString("name"));
-
             if(!qrData.getString("coupon").equals("-1"))
             {
 //                Log.d("debug shop","myshop coupon"+dataControler.shopData.getMyShopCoupon_uid().toString());
                 final JSONObject coupon = dataControler.shopData.getMyShopCoupon_uid().getJSONObject(qrData.getString("coupon"));
 //                Log.d("debug coupon",coupon.toString());
                 String message = "偵測到消費者使用消費劵 "+coupon.getString("off_amt")+" 折價劵\n\n是否使用？";
-                new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("優惠卷使用提醒").setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener()
+                new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("優惠劵使用提醒").setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener()
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which)
@@ -173,6 +177,26 @@ public class ShopReceiveActivity extends AppCompatActivity
                 }).setNegativeButton("NO",null).show();
             }
         } catch (JSONException e) { e.printStackTrace(); }
+
+        try {
+            if (qrData.getString("point") != null){
+    //                Log.d("debug coupon",coupon.toString());
+                String message = "偵測到消費者使用 " +qrData.getString("point")+ " 點數兌換 "+ String.valueOf(Integer.parseInt(qrData.getString("point"))/10) +" 小時\n\n是否使用？";
+                new AlertDialog.Builder(ShopReceiveActivity.this).setTitle("點數使用提醒").setMessage(message).setPositiveButton("OK", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        try
+                        {
+                            offAmt_txv.setText(String.valueOf(Integer.parseInt(qrData.getString("point"))*5));
+                        } catch (JSONException e) { e.printStackTrace(); }
+                    }
+                }).setNegativeButton("NO",null).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getIntentData()

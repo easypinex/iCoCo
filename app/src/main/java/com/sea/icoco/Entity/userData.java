@@ -48,7 +48,7 @@ public class userData
 
         dataControler.creditCardData.loadCreditData(); // 讀取信用卡資料
         dataControler.budgetData.loadBudget(); // 讀取預算管理資料
-        dataControler.couponData.loadCouponData();// 讀取優惠卷資料
+        dataControler.couponData.loadCouponData();// 讀取優惠劵資料
         dataControler.shopData.loadShopData(); // 讀取商家資料
         dataControler.aaMessageData.loadAAMessage(); // 讀取拆帳邀請資料
         dataControler.payData.loadPayData(); // 讀取付款資料

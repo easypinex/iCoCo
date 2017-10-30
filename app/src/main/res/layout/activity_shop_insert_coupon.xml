@@ -16,7 +16,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/couponName_edt"
-        android:hint="優惠卷名稱"
+        android:hint="優惠劵名稱"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -29,7 +29,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/counponContent_edt"
-        android:hint="優惠卷介紹內容"
+        android:hint="優惠劵介紹內容"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/relativeLayout"
         android:layout_alignParentLeft="true"
@@ -97,7 +97,7 @@
     </RelativeLayout>
 
     <TextView
-        android:text="優惠卷發送條件"
+        android:text="優惠劵發送條件"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView18"

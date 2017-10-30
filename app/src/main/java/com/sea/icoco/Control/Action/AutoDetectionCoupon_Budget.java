@@ -95,7 +95,7 @@ public class AutoDetectionCoupon_Budget
                 {
                     dataControler.couponData.loadCouponData();
                     locked = false;
-//                    new AlertDialog.Builder(context).setTitle("優惠卷接收狀態").setMessage("接收了 "+String.valueOf(sendCouponList.size())+" 張優惠卷").setNegativeButton("OK",null).show();
+//                    new AlertDialog.Builder(context).setTitle("優惠劵接收狀態").setMessage("接收了 "+String.valueOf(sendCouponList.size())+" 張優惠劵").setNegativeButton("OK",null).show();
                 }
             }
         }
