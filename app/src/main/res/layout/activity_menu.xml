@@ -20,14 +20,18 @@
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
             android:layout_alignParentTop="true" android:layout_marginLeft="21dp"
             android:layout_marginStart="21dp" android:layout_marginTop="21dp">
+
             <ImageView
                 android:id="@+id/transferBalance_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onPayClick" android:src="@drawable/pay"
-                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/pay" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -35,14 +39,18 @@
             android:layout_width="130dp"
             android:layout_height="130dp" android:layout_alignLeft="@+id/relativeLayout"
             android:layout_alignStart="@+id/relativeLayout" android:layout_centerVertical="true">
+
             <ImageView
                 android:id="@+id/gopoint_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onFriendClick" android:src="@drawable/gopoint"
-                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/gopoint" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/relativeLayout5"
@@ -51,15 +59,18 @@
             android:layout_alignLeft="@+id/relativeLayout2"
             android:layout_alignParentBottom="true" android:layout_alignStart="@+id/relativeLayout2"
             android:layout_marginBottom="21dp">
+
             <ImageView
                 android:id="@+id/showQRCode_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="BuildButonClick"
-                android:src="@drawable/qr"
-                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/qr" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/relativeLayout3"
@@ -69,21 +80,25 @@
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/relativeLayout" android:layout_marginEnd="21dp"
             android:layout_marginRight="21dp">
+
             <ImageView
                 android:id="@+id/aa_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onAAClick"
-                android:src="@drawable/aa"
-                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/aa" />
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/relativeLayout4"
             android:layout_width="130dp" android:layout_height="130dp"
             android:layout_alignEnd="@+id/relativeLayout3"
             android:layout_alignRight="@+id/relativeLayout3" android:layout_alignTop="@+id/relativeLayout2">
+
             <ImageView
                 android:id="@+id/transferBounsPoint_img"
                 android:layout_width="wrap_content"
@@ -96,7 +111,6 @@
                 android:layout_alignParentTop="true"
                 android:cropToPadding="false"
                 android:nestedScrollingEnabled="false"
-                android:onClick="onDepositClick"
                 android:src="@drawable/gomap" />
         </RelativeLayout>
         <RelativeLayout
@@ -105,15 +119,18 @@
             android:layout_alignLeft="@+id/relativeLayout4"
             android:layout_alignStart="@+id/relativeLayout4"
             android:layout_alignTop="@+id/relativeLayout5">
+
             <ImageView
                 android:id="@+id/serachMenu_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onSearcherClick" android:src="@drawable/search"
-                android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/search" />
             <RelativeLayout
                 android:id="@+id/relativeLayout18"
                 android:layout_width="35dp"
