@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">運動支付Go</string>
+    <string name="app_name">健康Go</string>
     <!--FB API ID-->
     <string name="facebook_app_id">1802946313285544</string>
     <string name="title_activity_maps">Go 地圖</string>

@@ -100,7 +100,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/search_oupon"
+            app:srcCompat="@drawable/search_coupon"
             android:id="@+id/searchCoupon_img"/>
 
         <RelativeLayout

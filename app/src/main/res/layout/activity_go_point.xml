@@ -12,16 +12,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sea.icoco.GoPointActivity">
 
-    <com.mikhaellopez.circularprogressbar.CircularProgressBar
-        android:id="@+id/progress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+    <com.sea.icoco.ActivitySupporter.StepArcView
+        android:id="@+id/stepArcView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:cpb_background_progressbar_color="#CDDEF8"
-        app:cpb_background_progressbar_width="10dp"
-        app:cpb_progressbar_color="#4876F9"
-        app:cpb_progressbar_width="20dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView27"
@@ -48,9 +48,9 @@
         android:id="@+id/bonus_txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/progress"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="137dp"
+        android:layout_alignLeft="@+id/textView27"
+        android:layout_alignStart="@+id/textView27"
+        android:layout_below="@+id/cc"
         android:text="將獲得點數 1 點"
         android:textColor="#006DF0"
         android:textSize="20sp" />
