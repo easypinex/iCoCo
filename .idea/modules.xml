@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/iCoCo_GoPoint.iml" filepath="$PROJECT_DIR$/iCoCo_GoPoint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iCoCo-GoPoint.iml" filepath="$PROJECT_DIR$/iCoCo-GoPoint.iml" />
     </modules>
   </component>
 </project>
