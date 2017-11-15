@@ -35,7 +35,7 @@ public class BuilderQRcode
     private ImageView target;
     JSONObject contentJObj;
     // QR code 寬度,QR code 高度
-    private int QRCodeWidth=1000,QRCodeHeight = 1000;
+    private int QRCodeWidth=300,QRCodeHeight = 300;
 
     public BuilderQRcode(ImageView target, String content) throws JSONException
     {

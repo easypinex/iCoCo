@@ -53,20 +53,21 @@ public class gpsData
             @Override
             public void onLocationChanged(Location location)
             {  // 位置變更事件
-                if(location!=null)
-                {
+                if(location!=null) {
                     myLocation = location;
                     locationSuccess = true;
 //                    Log.d("debug","testLocation:"+location.getLongitude()+","+location.getLatitude()+"Provider="+location.getProvider());
-                    if (isBetterLocation(location, myLocation))
-                    {
+                    if (isBetterLocation(location, myLocation)) {
+                        updatePlace(location);
+                    } else {
                         updatePlace(location);
                     }
-                    else
-                    {
-                        updatePlace(location);
-                    }
-                    Log.d("GPS","gpsDataonLocationChanged");
+                    Log.d("GPS", "gpsDataonLocationChanged");
+
+
+                    //速度
+                    Double tempSpeed = (location.getSpeed() * 3.6);  // m/s --> Km/h
+                    Log.d("GPS","Speed="+tempSpeed.toString());
                 }
             }
 
@@ -87,6 +88,7 @@ public class gpsData
             { //定位提供者狀態改變
 
             }
+
         };
 
         lmg = (LocationManager) context.getSystemService(context.LOCATION_SERVICE); // 取得系統服務的LocationManager物件
