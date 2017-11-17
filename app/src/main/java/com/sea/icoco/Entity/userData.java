@@ -21,7 +21,7 @@ import org.json.JSONObject;
  */
 public class userData
 {
-    private String id = "",fbid = "",ac = "",name = "",phone = "",email = "",birthday = "",gender = "",ctbcAc="",ctbcPin="",CustID="";
+    private String id = "",fbid = "",ac = "",name = "",phone = "",email = "",birthday = "",gender = "",ctbcAc="",ctbcPin="",CustID="",BonusPoint="";
     private Intent intent = new Intent();
     private DataControler dataControler = MainActivity.dataControler;
     JSONObject userData = new JSONObject();
@@ -44,6 +44,7 @@ public class userData
         try {ctbcAc = jsonObject.getString("ctbcAc");} catch (Exception e) {Log.e("Debug userData","No value for ctbcAc");}
         try {ctbcPin = jsonObject.getString("ctbcPin");} catch (Exception e) {Log.e("Debug userData","No value for ctbcPin");}
         try {CustID = jsonObject.getString("CustID");} catch (Exception e) {Log.e("Debug userData","No value for CustID");}
+        try {BonusPoint = jsonObject.getString("BonusPoint");} catch (Exception e) {Log.e("Debug userData","No value for BonusPoint");}
         Log.d("Debug userData","Loging Success !!");
 
         dataControler.creditCardData.loadCreditData(); // 讀取信用卡資料
@@ -133,10 +134,15 @@ public class userData
     public String getGender() { return gender; }
     public JSONObject getAll() {return userData;}
     public String getCustID (){return CustID;}
+    public String getBonusPoint(){return BonusPoint;}
     public void setCustID(String custID)
     {
         this.CustID = custID;
     }
-
+    public void setBonusPoint(Integer point){
+        BonusPoint = point.toString();
+        String sql = "UPDATE `icoco`.`user` SET `BonusPoint`=BonusPoint+1 WHERE `uid`='"+getId()+"';";
+        new MySQL_Execute().execute(sql);
+    }
 }
 

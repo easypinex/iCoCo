@@ -17,17 +17,20 @@ import com.google.android.gms.maps.model.LatLng;
 import com.sea.icoco.DiaryMapsActivity;
 import com.sea.icoco.MainActivity;
 import com.sea.icoco.MapsActivity;
+import com.sea.icoco.MenuActivity;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+
 /**
  * Created by AndyChuo on 2016/5/4.
  */
 public class gpsData
 {
+    String tag = "GPS";
     Context context;
     LocationManager lmg;    // 定位管理員
     Location myLocation;    // 儲存最近的定位資料
@@ -37,13 +40,18 @@ public class gpsData
     LocationListener locationListener;
     boolean locationSuccess,locateStatus;
     boolean mapReady = false;
-
+    boolean keepGoing = false;
+    int notGoingCount = 0;
+    Double speed = 0.0;
+    boolean speedLimit = true;
     public void loadGpsData(Context context)
     {
         this.context = context;
         initLmg();
     }
-
+    public boolean isSpeedLimit(){
+        return speedLimit;
+    }
 
     private void initLmg()
     {
@@ -56,37 +64,39 @@ public class gpsData
                 if(location!=null) {
                     myLocation = location;
                     locationSuccess = true;
-//                    Log.d("debug","testLocation:"+location.getLongitude()+","+location.getLatitude()+"Provider="+location.getProvider());
+//                    Log.d(tag,"testLocation:"+location.getLongitude()+","+location.getLatitude()+"Provider="+location.getProvider());
                     if (isBetterLocation(location, myLocation)) {
                         updatePlace(location);
                     } else {
                         updatePlace(location);
                     }
-                    Log.d("GPS", "gpsDataonLocationChanged");
+                    Log.d(tag, "gpsDataonLocationChanged");
 
 
                     //速度
+
                     Double tempSpeed = (location.getSpeed() * 3.6);  // m/s --> Km/h
-                    Log.d("GPS","Speed="+tempSpeed.toString());
+                    checkSpeed(tempSpeed);
+
                 }
             }
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras)
             {
-//                Log.d("debug","gpsDataStatusChanged");
+                Log.d(tag,"gpsDataStatusChanged to :"+provider);
             }
 
             @Override
             public void onProviderEnabled(String provider)
             { //定位提供者可提供服務
-                Log.d("debug","gpsDataonProviderEnabled");
+                Log.d(tag,"gpsDataonProviderEnabled to :"+provider);
             }
 
             @Override
             public void onProviderDisabled(String provider)
             { //定位提供者狀態改變
-
+                Log.d(tag,"gpsDataonProviderDisabled to :"+provider);
             }
 
         };
@@ -192,9 +202,28 @@ public class gpsData
     }
 
 
+    private void checkSpeed(Double tempSpeed){
+        Log.d(tag,"Speed="+tempSpeed.toString());
+        try{
+            if (tempSpeed < 1){
+                notGoingCount+=1;
+                if (notGoingCount >=1){
+                    keepGoing = false;
+                    speed = tempSpeed;
+                }
+            }else{
+                keepGoing = true;
+                speed = tempSpeed;
+            }
+        }catch (Exception e){}
+    }
 
-
-
+    public Double getSpeed(){
+        return speed;
+    }
+    public boolean isKeepGoing(){
+        return keepGoing;
+    }
 
 ////////////// ↓gps,wifi切換判定
 
@@ -267,7 +296,7 @@ public class gpsData
 
     private void updatePlace(Location location)
     {  //地理位置更新
-//        Log.d("debug","updatePlace");
+//        Log.d(tag,"updatePlace");
         if (location != null)
         {
 //            myLocation = location;

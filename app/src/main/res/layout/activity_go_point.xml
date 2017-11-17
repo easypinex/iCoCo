@@ -16,8 +16,9 @@
         android:id="@+id/stepArcView"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_above="@+id/textView27"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
+        android:layout_marginBottom="34dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,24 +46,31 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/bonus_txv"
+        android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27"
-        android:layout_below="@+id/cc"
-        android:text="將獲得點數 1 點"
-        android:textColor="#006DF0"
-        android:textSize="20sp" />
+        android:layout_alignBottom="@+id/stepArcView"
+        android:layout_marginBottom="19dp"
+        android:layout_toStartOf="@+id/speed_txv"
+        android:text="時速：" />
 
     <TextView
-        android:id="@+id/setp_txv"
+        android:id="@+id/speed_txv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bonus_txv"
+        android:layout_alignBaseline="@+id/textView28"
+        android:layout_alignBottom="@+id/textView28"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
-        android:text="累積步數 0 / 10 步"
-        android:textColor="#006DF0" />
+        android:text="0.00" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/speed_txv"
+        android:layout_alignBottom="@+id/speed_txv"
+        android:layout_marginStart="7dp"
+        android:layout_toEndOf="@+id/speed_txv"
+        android:text="公里/時" />
 
 </RelativeLayout>

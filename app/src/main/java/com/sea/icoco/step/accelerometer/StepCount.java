@@ -2,6 +2,9 @@ package com.sea.icoco.step.accelerometer;
 
 import android.util.Log;
 
+import com.sea.icoco.Control.DataControler;
+import com.sea.icoco.MainActivity;
+
 /**
  * Created by dylan on 16/9/27.
  */
@@ -18,7 +21,7 @@ public class StepCount implements StepCountListener {
     private long timeOfLastPeak = 0;
     private long timeOfThisPeak = 0;
     private StepDetector stepDetector;
-
+    DataControler dataControler = MainActivity.dataControler;
     public StepCount() {
         stepDetector = new StepDetector();
         stepDetector.initListener(this);
@@ -36,7 +39,7 @@ public class StepCount implements StepCountListener {
         Log.d(tag,"count="+String.valueOf(this.count));
         this.timeOfLastPeak = this.timeOfThisPeak;
         this.timeOfThisPeak = System.currentTimeMillis();
-        if (this.timeOfThisPeak - this.timeOfLastPeak <= 3000L) {
+        if (this.timeOfThisPeak - this.timeOfLastPeak <= 3000L && (dataControler.gpsData.isKeepGoing() && dataControler.gpsData.getSpeed() <= 20.0)|| !dataControler.gpsData.isSpeedLimit()) {
             if (this.count < 0) {
                 this.count++;
             } else if (this.count == 0) {

@@ -55,7 +55,7 @@ public class StepService extends Service implements SensorEventListener {
      */
     private TimeCount time;
     /**
-     * 当前所走的步数
+     * 当前所走的步數
      */
     public static int CURRENT_STEP;
     /**
@@ -63,15 +63,15 @@ public class StepService extends Service implements SensorEventListener {
      */
     private static int stepSensorType = -1;
     /**
-     * 每次第一次启动记步服务时是否从系统中获取了已有的步数记录
+     * 每次第一次启动记步服务时是否从系统中获取了已有的步數记录
      */
     private boolean hasRecord = false;
     /**
-     * 系统中获取到的已有的步数
+     * 系统中获取到的已有的步數
      */
     private int hasStepCount = 0;
     /**
-     * 上一次的步数
+     * 上一次的步數
      */
     private int previousStepCount = 0;
     /**
@@ -79,7 +79,7 @@ public class StepService extends Service implements SensorEventListener {
      */
     private NotificationManager mNotificationManager;
     /**
-     * 加速度传感器中获取的步数
+     * 加速度传感器中获取的步數
      */
     private StepCount mStepCount;
     /**
@@ -124,7 +124,7 @@ public class StepService extends Service implements SensorEventListener {
     private void initNotification() {
         mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setContentTitle(getResources().getString(R.string.app_name))
-                .setContentText("今日步数" + CURRENT_STEP + " 步")
+                .setContentText("今日步數" + CURRENT_STEP + " 步")
                 .setContentIntent(getDefalutIntent(Notification.FLAG_ONGOING_EVENT))
                 .setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示
                 .setPriority(Notification.PRIORITY_DEFAULT)//设置该通知优先级
@@ -138,7 +138,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 初始化当天的步数
+     * 初始化当天的步數
      */
     private void initTodayData() {
         CURRENT_DATE = getTodayDate();
@@ -204,18 +204,18 @@ public class StepService extends Service implements SensorEventListener {
                 } else if (Intent.ACTION_SHUTDOWN.equals(intent.getAction())) {
                     Log.i(TAG, " receive ACTION_SHUTDOWN");
                     save();
-                } else if (Intent.ACTION_DATE_CHANGED.equals(action)) {//日期变化步数重置为0
-//                    Log.d(TAG,"重置步数" + StepDcretor.CURRENT_STEP);
+                } else if (Intent.ACTION_DATE_CHANGED.equals(action)) {//日期变化步數重置为0
+//                    Log.d(TAG,"重置步數" + StepDcretor.CURRENT_STEP);
                     save();
                     isNewDay();
                 } else if (Intent.ACTION_TIME_CHANGED.equals(action)) {
-                    //时间变化步数重置为0
+                    //时间变化步數重置为0
                     isCall();
                     save();
                     isNewDay();
-                } else if (Intent.ACTION_TIME_TICK.equals(action)) {//日期变化步数重置为0
+                } else if (Intent.ACTION_TIME_TICK.equals(action)) {//日期变化步數重置为0
                     isCall();
-//                    Log.d(TAG,"重置步数" + StepDcretor.CURRENT_STEP);
+//                    Log.d(TAG,"重置步數" + StepDcretor.CURRENT_STEP);
                     save();
                     isNewDay();
                 }
@@ -255,7 +255,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 开始保存记步数据
+     * 开始保存记步數据
      */
     private void startTimeCount() {
         if (time == null) {
@@ -265,7 +265,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 更新步数通知
+     * 更新步數通知
      */
     private void updateNotification() {
         //设置点击跳转
@@ -273,7 +273,7 @@ public class StepService extends Service implements SensorEventListener {
         PendingIntent hangPendingIntent = PendingIntent.getActivity(this, 0, hangIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         Notification notification = mBuilder.setContentTitle(getResources().getString(R.string.app_name))
-                .setContentText("今日步数" + CURRENT_STEP + " 步")
+                .setContentText("今日步數" + CURRENT_STEP + " 步")
                 .setWhen(System.currentTimeMillis())//通知产生的时间，会在通知信息里显示
                 .setContentIntent(hangPendingIntent)
                 .build();
@@ -318,7 +318,7 @@ public class StepService extends Service implements SensorEventListener {
 
         String plan = this.getSharedPreferences("share_date", Context.MODE_MULTI_PROCESS).getString("planWalk_QTY", "7000");
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
-        mBuilder.setContentTitle("今日步数" + CURRENT_STEP + " 步")
+        mBuilder.setContentTitle("今日步數" + CURRENT_STEP + " 步")
                 .setContentText("距离目标还差" + (Integer.valueOf(plan) - CURRENT_STEP) + "步，加油！")
                 .setContentIntent(hangPendingIntent)
                 .setTicker(getResources().getString(R.string.app_name) + "提醒您开始锻炼了")//通知首次出现在通知栏，带上升动画效果的
@@ -364,7 +364,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 获取当前步数
+     * 获取当前步數
      *
      * @return
      */
@@ -408,10 +408,10 @@ public class StepService extends Service implements SensorEventListener {
 
     /**
      * 添加传感器监听
-     * 1. TYPE_STEP_COUNTER API的解释说返回从开机被激活后统计的步数，当重启手机后该数据归零，
+     * 1. TYPE_STEP_COUNTER API的解释说返回从开机被激活后统计的步數，当重启手机后该数据归零，
      * 该传感器是一个硬件传感器所以它是低功耗的。
      * 为了能持续的计步，请不要反注册事件，就算手机处于休眠状态它依然会计步。
-     * 当激活的时候依然会上报步数。该sensor适合在长时间的计步需求。
+     * 当激活的时候依然会上报步數。该sensor适合在长时间的计步需求。
      * <p>
      * 2.TYPE_STEP_DETECTOR翻译过来就是走路检测，
      * API文档也确实是这样说的，该sensor只用来监监测走步，每次返回数字1.0。
@@ -439,10 +439,10 @@ public class StepService extends Service implements SensorEventListener {
     /**
      * 传感器监听回调
      * 记步的关键代码
-     * 1. TYPE_STEP_COUNTER API的解释说返回从开机被激活后统计的步数，当重启手机后该数据归零，
+     * 1. TYPE_STEP_COUNTER API的解释说返回从开机被激活后统计的步數，当重启手机后该数据归零，
      * 该传感器是一个硬件传感器所以它是低功耗的。
      * 为了能持续的计步，请不要反注册事件，就算手机处于休眠状态它依然会计步。
-     * 当激活的时候依然会上报步数。该sensor适合在长时间的计步需求。
+     * 当激活的时候依然会上报步數。该sensor适合在长时间的计步需求。
      * <p>
      * 2.TYPE_STEP_DETECTOR翻译过来就是走路检测，
      * API文档也确实是这样说的，该sensor只用来监监测走步，每次返回数字1.0。
@@ -453,20 +453,20 @@ public class StepService extends Service implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (stepSensorType == Sensor.TYPE_STEP_COUNTER) {
-            //获取当前传感器返回的临时步数
+            //获取当前传感器返回的临时步數
             int tempStep = (int) event.values[0];
-            //首次如果没有获取手机系统中已有的步数则获取一次系统中APP还未开始记步的步数
+            //首次如果没有获取手机系统中已有的步數则获取一次系统中APP还未开始记步的步數
             if (!hasRecord) {
                 hasRecord = true;
                 hasStepCount = tempStep;
             } else {
-                //获取APP打开到现在的总步数=本次系统回调的总步数-APP打开之前已有的步数
+                //获取APP打开到现在的总步數=本次系统回调的总步數-APP打开之前已有的步數
                 int thisStepCount = tempStep - hasStepCount;
-                //本次有效步数=（APP打开后所记录的总步数-上一次APP打开后所记录的总步数）
+                //本次有效步數=（APP打开后所记录的总步數-上一次APP打开后所记录的总步數）
                 int thisStep = thisStepCount - previousStepCount;
-                //总步数=现有的步数+本次有效步数
+                //总步數=现有的步數+本次有效步數
                 CURRENT_STEP += (thisStep);
-                //记录最后一次APP打开到现在的总步数
+                //记录最后一次APP打开到现在的总步數
                 previousStepCount = thisStepCount;
             }
             Log.d(TAG,"tempStep" + tempStep);
@@ -511,7 +511,7 @@ public class StepService extends Service implements SensorEventListener {
 
 
     /**
-     * 保存记步数据
+     * 保存记步數据
      */
     class TimeCount extends CountDownTimer {
         public TimeCount(long millisInFuture, long countDownInterval) {
@@ -534,7 +534,7 @@ public class StepService extends Service implements SensorEventListener {
     }
 
     /**
-     * 保存记步数据
+     * 保存记步數据
      */
     private void save() {
         int tempStep = CURRENT_STEP;

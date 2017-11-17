@@ -21,6 +21,7 @@ import com.sea.icoco.step.UpdateUiCallBack;
 import com.sea.icoco.step.service.StepService;
 import com.sea.icoco.step.utils.SharedPreferencesUtils;
 
+import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,7 +29,7 @@ public class GoPointActivity extends AppCompatActivity {
 //    private Timer timer;
     private boolean isBind = false;
 //    CircularProgressBar circularProgressBar; // https://github.com/lopspower/CircularProgressBar
-    TextView point_text,setp_txv,bonus_txv;
+    TextView point_text,speed_txv;
     private StepArcView stepArcView;
     private SharedPreferencesUtils sp;
     StepService stepService;
@@ -45,9 +46,10 @@ public class GoPointActivity extends AppCompatActivity {
     }
     private void initData() {
         sp = new SharedPreferencesUtils(this);
-        //获取用户设置的计划锻炼步数，没有设置过的话默认7000
+        //获取用户设置的计划锻炼步數，没有设置过的话默认7000
         String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "20");
-        //设置当前步数为0
+        point_text.setText(dataControler.userData.getBonusPoint());
+        //设置当前步數为0
         stepArcView.setCurrentCount(Integer.parseInt(planWalk_QTY), 0);
 //        tv_isSupport.setText("计步中...");
     }
@@ -59,8 +61,7 @@ public class GoPointActivity extends AppCompatActivity {
     private void findView() {
         stepArcView = (StepArcView) findViewById(R.id.stepArcView);
         point_text = (TextView) findViewById(R.id.point_text);
-        setp_txv = (TextView) findViewById(R.id.setp_txv);
-        bonus_txv = (TextView) findViewById(R.id.bonus_txv);
+        speed_txv = (TextView) findViewById(R.id.speed_txv);
     }
 
     ServiceConnection conn = new ServiceConnection() {
@@ -73,21 +74,36 @@ public class GoPointActivity extends AppCompatActivity {
         public void onServiceConnected(ComponentName name, final IBinder service) {
             stepService = ((StepService.StepBinder) service).getService();
             //设置初始化数据
-            String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "20");
+            final String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "20");
             stepArcView.setCurrentCount(Integer.parseInt(planWalk_QTY), stepService.getStepCount());
 
-            //设置步数监听回调
+
+
+            stepArcView.setCurrentCount(Integer.parseInt(planWalk_QTY), stepService.getStepCount());
+
+            //设置步數监听回调
             stepService.registerCallback(new UpdateUiCallBack() {
                 @Override
                 public void updateUi(int stepCount) {
-                    String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "20");
-                    if (stepCount >= Integer.parseInt(planWalk_QTY)){
-                        stepService.setStepCount(stepCount-Integer.parseInt(planWalk_QTY));
-                        stepArcView.setCurrentCount(20,stepCount-Integer.parseInt(planWalk_QTY));
+                    speed_txv.setText(new DecimalFormat("#.##").format(dataControler.gpsData.getSpeed()));
+                    if ((dataControler.gpsData.isKeepGoing() && dataControler.gpsData.getSpeed() <= 20.0) || !dataControler.gpsData.isSpeedLimit()){
+                        Integer planWalk_QTY = Integer.parseInt((String) sp.getParam("planWalk_QTY", "20"));
+                        if (stepCount >= planWalk_QTY){
+                            stepService.setStepCount(stepCount-planWalk_QTY);
+                            stepArcView.setCurrentCount(20,stepCount-planWalk_QTY);
+                            dataControler.userData.setBonusPoint(Integer.parseInt(dataControler.userData.getBonusPoint())+1);
+                            point_text.setText(dataControler.userData.getBonusPoint());
+                        }
+                        else{
+                            stepArcView.setCurrentCount(planWalk_QTY, stepCount);
+                        }
+                    }else{
+                        if (stepCount >= Integer.parseInt(planWalk_QTY)){
+                            stepService.setStepCount(stepCount-Integer.parseInt(planWalk_QTY));
+                            stepArcView.setCurrentCount(20,stepCount-Integer.parseInt(planWalk_QTY));
+                        }
                     }
-                    else{
-                        stepArcView.setCurrentCount(Integer.parseInt(planWalk_QTY), stepCount);
-                    }
+
 
 //                    Log.d("點數","最大步:"+planWalk_QTY);
                 }

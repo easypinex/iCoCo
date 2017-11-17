@@ -15,7 +15,7 @@ import com.sea.icoco.R;
 
 /**
  * Created by DylanAndroid on 2016/5/26.
- * 显示步数的圆弧
+ * 显示步數的圆弧
  */
 public class StepArcView extends View {
 
@@ -24,11 +24,11 @@ public class StepArcView extends View {
      */
     private float borderWidth = dipToPx(14);
     /**
-     * 画步数的数值的字体大小
+     * 画步數的数值的字体大小
      */
     private float numberTextSize = 0;
     /**
-     * 步数
+     * 步數
      */
     private String stepNumber = "0";
     /**
@@ -40,7 +40,7 @@ public class StepArcView extends View {
      */
     private float angleLength = 270;
     /**
-     * 所要绘制的当前步数的红色圆弧终点到起点的夹角
+     * 所要绘制的当前步數的红色圆弧终点到起点的夹角
      */
     private float currentAngleLength = 0;
     /**
@@ -77,12 +77,12 @@ public class StepArcView extends View {
         drawArcRed(canvas, rectF);
         /**【第三步】绘制当前进度的红色数字*/
         drawTextNumber(canvas, centerX);
-        /**【第四步】绘制"步数"的红色数字*/
+        /**【第四步】绘制"步數"的红色数字*/
         drawTextStepString(canvas, centerX);
     }
 
     /**
-     * 1.绘制总步数的黄色圆弧
+     * 1.绘制总步數的黄色圆弧
      *
      * @param canvas 画笔
      * @param rectF  参考的矩形
@@ -115,7 +115,7 @@ public class StepArcView extends View {
     }
 
     /**
-     * 2.绘制当前步数的红色圆弧
+     * 2.绘制当前步數的红色圆弧
      */
     private void drawArcRed(Canvas canvas, RectF rectF) {
         Paint paintCurrent = new Paint();
@@ -129,7 +129,7 @@ public class StepArcView extends View {
     }
 
     /**
-     * 3.圆环中心的步数
+     * 3.圆环中心的步數
      */
     private void drawTextNumber(Canvas canvas, float centerX) {
         Paint vTextPaint = new Paint();
@@ -146,7 +146,7 @@ public class StepArcView extends View {
     }
 
     /**
-     * 4.圆环中心[步数]的文字
+     * 4.圆环中心[步數]的文字
      */
     private void drawTextStepString(Canvas canvas, float centerX) {
         Paint vTextPaint = new Paint();
@@ -154,14 +154,14 @@ public class StepArcView extends View {
         vTextPaint.setTextAlign(Paint.Align.CENTER);
         vTextPaint.setAntiAlias(true);//抗锯齿功能
 //        vTextPaint.setColor(getResources().getColor(R.color.grey));
-        String stepString = "步數";
+        String stepString = "20步將獲得點數一點";
         Rect bounds = new Rect();
         vTextPaint.getTextBounds(stepString, 0, stepString.length(), bounds);
         canvas.drawText(stepString, centerX, getHeight() / 2 + bounds.height() + getFontHeight(numberTextSize), vTextPaint);
     }
 
     /**
-     * 获取当前步数的数字的高度
+     * 获取当前步數的数字的高度
      *
      * @param fontSize 字体大小
      * @return 字体高度
@@ -187,23 +187,23 @@ public class StepArcView extends View {
     }
 
     /**
-     * 所走的步数进度
+     * 所走的步數进度
      *
-     * @param totalStepNum  设置的步数
-     * @param currentCounts 所走步数
+     * @param totalStepNum  设置的步數
+     * @param currentCounts 所走步數
      */
     public void setCurrentCount(int totalStepNum, int currentCounts) {
-        /**如果当前走的步数超过总步数则圆弧还是270度，不能成为园*/
+        /**如果当前走的步數超过总步數则圆弧还是270度，不能成为园*/
         if (currentCounts > totalStepNum) {
 
         }
 
-        /**上次所走步数占用总共步数的百分比*/
+        /**上次所走步數占用总共步數的百分比*/
         float scalePrevious = (float) Integer.valueOf(stepNumber) / totalStepNum;
         /**换算成弧度最后要到达的角度的长度-->弧长*/
         float previousAngleLength = scalePrevious * angleLength;
 
-        /**所走步数占用总共步数的百分比*/
+        /**所走步數占用总共步數的百分比*/
         float scale = (float) currentCounts / totalStepNum;
         /**换算成弧度最后要到达的角度的长度-->弧长*/
         float currentAngleLength = scale * angleLength;
@@ -242,7 +242,7 @@ public class StepArcView extends View {
     }
 
     /**
-     * 设置文本大小,防止步数特别大之后放不下，将字体大小动态设置
+     * 设置文本大小,防止步數特别大之后放不下，将字体大小动态设置
      *
      * @param num
      */

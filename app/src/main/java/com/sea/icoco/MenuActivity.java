@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity
     private ImageView AA_img,transferBounsPoint_img,transferBalance_img,showQRCode_img,gopoint_img,serachMenu_img;
     Integer updateSecond = 1;
     ImageView redBall_img;
-    TextView redBall_txv;
+    public static TextView redBall_txv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
