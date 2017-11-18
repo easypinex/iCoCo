@@ -34,7 +34,6 @@
             android:id="@+id/imageView_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/messageText"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             app:srcCompat="@drawable/add" />
@@ -127,7 +126,6 @@
         android:inputType="textMultiLine"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/messageText"
         android:layout_toRightOf="@+id/textView20"
         android:layout_toEndOf="@+id/textView20"
         android:layout_above="@+id/editText11" />

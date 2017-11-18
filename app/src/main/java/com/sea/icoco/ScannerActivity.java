@@ -28,7 +28,7 @@ public class ScannerActivity extends AppCompatActivity implements CompoundBarcod
 {
     private CaptureManager capture;
     private CompoundBarcodeView barcodeScannerView;
-    private Button switchFlashlightButton;
+//    private Button switchFlashlightButton;
     private Intent intent;
     DataControler dataControler = MainActivity.dataControler;
     @Override
@@ -40,12 +40,12 @@ public class ScannerActivity extends AppCompatActivity implements CompoundBarcod
         barcodeScannerView = (CompoundBarcodeView)findViewById(R.id.zxing_barcode_scanner);
         barcodeScannerView.setTorchListener(this);
 
-        switchFlashlightButton = (Button)findViewById(R.id.switch_flashlight);
+//        switchFlashlightButton = (Button)findViewById(R.id.switch_flashlight);
 
-        if (!hasFlash())
-        {
-            switchFlashlightButton.setVisibility(View.GONE);
-        }
+//        if (!hasFlash())
+//        {
+//            switchFlashlightButton.setVisibility(View.GONE);
+//        }
 
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
@@ -68,24 +68,24 @@ public class ScannerActivity extends AppCompatActivity implements CompoundBarcod
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
-    public void switchFlashlight(View view)
-    {
-        if (new String("開啟閃光燈").equals(switchFlashlightButton.getText())) {
-            barcodeScannerView.setTorchOn();
-        } else {
-            barcodeScannerView.setTorchOff();
-        }
-    }
+//    public void switchFlashlight(View view)
+//    {
+//        if (new String("開啟閃光燈").equals(switchFlashlightButton.getText())) {
+//            barcodeScannerView.setTorchOn();
+//        } else {
+//            barcodeScannerView.setTorchOff();
+//        }
+//    }
 
     @Override
     public void onTorchOn()
     {
-        switchFlashlightButton.setText("關閉閃光燈");
+//        switchFlashlightButton.setText("關閉閃光燈");
     }
 
     @Override
     public void onTorchOff() {
-        switchFlashlightButton.setText("開啟閃光燈");
+//        switchFlashlightButton.setText("開啟閃光燈");
     }
 
     @Override

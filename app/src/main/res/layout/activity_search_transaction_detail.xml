@@ -13,8 +13,6 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/reload_btn"
-        android:layout_toStartOf="@+id/reload_btn"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/listView" />
