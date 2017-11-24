@@ -57,17 +57,18 @@
             android:layout_marginTop="5dp"/>
 
         <EditText
+            android:id="@+id/traAmt_edt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/traAmt_edt"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"
-            android:textDirection="rtl"
-            android:hint="請輸轉帳金額"
             android:layout_alignParentTop="true"
-            android:inputType="number"/>
+            android:hint="請輸轉帳金額"
+            android:inputType="number"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -92,18 +93,19 @@
             android:layout_marginTop="5dp"/>
 
         <EditText
+            android:id="@+id/leftBalance_edt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/leftBalance_edt"
-            android:textDirection="rtl"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:editable="false"
             android:focusable="false"
             android:text="0"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:textDirection="rtl"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <Button
@@ -139,17 +141,18 @@
             android:layout_marginTop="5dp"/>
 
         <EditText
+            android:id="@+id/balance_edt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/balance_edt"
-            android:textDirection="rtl"
+            android:layout_alignLeft="@+id/textView7"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/textView7"
             android:editable="false"
             android:focusable="false"
             android:text="0"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/textView7"
-            android:layout_alignStart="@+id/textView7"/>
+            android:textDirection="rtl"
+            android:textSize="16sp" />
     </RelativeLayout>
 </RelativeLayout>

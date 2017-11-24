@@ -2,7 +2,7 @@ package com.sea.icoco;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.util.Calendar;
+import java.util.Calendar;
 import android.os.Build;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
@@ -45,6 +45,10 @@ public class QRCodeActivity extends AppCompatActivity
             qrJson.put("bankNo","822");
             qrJson.put("name",dataControler.userData.getName());
             qrJson.put("coupon",couponid);
+            if(dataControler.gpsData.getLocationLoadSuccess()) {
+                qrJson.put("lat", String.valueOf(dataControler.gpsData.getPlace().latitude));
+                qrJson.put("lng", String.valueOf(dataControler.gpsData.getPlace().latitude));
+            }
         } catch (Exception e) { Log.e("Debug QRCode",e.toString()); }
 
         String coupon_id = getIntent().getStringExtra("couponid");
@@ -132,7 +136,7 @@ public class QRCodeActivity extends AppCompatActivity
                         qrRebuildTimer();
                     }
                 }
-                Log.d("handler","QrcodeActivity.qrRebuildTimer="+count);
+                //Log.d("handler","QrcodeActivity.qrRebuildTimer="+count);
                 handle_couponRebuild.postDelayed(this, 1*1000);
             }
         };

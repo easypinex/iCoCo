@@ -30,14 +30,14 @@
             android:textSize="18dp"/>
 
         <EditText
+            android:id="@+id/activity_edt"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:id="@+id/activity_edt"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
             android:nextFocusDown="@+id/total_edt"
             android:textDirection="rtl"
-            />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
@@ -64,14 +64,14 @@
             android:textSize="18dp"/>
 
         <EditText
+            android:id="@+id/total_edt"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:id="@+id/total_edt"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
-            android:textDirection="rtl"
+            android:layout_alignParentRight="true"
             android:inputType="number"
-            />
+            android:textDirection="rtl"
+            android:textSize="16dp" />
 
     </RelativeLayout>
 
@@ -164,15 +164,15 @@
             android:textSize="18dp"/>
 
         <EditText
+            android:id="@+id/shareNum_edt"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:id="@+id/shareNum_edt"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
-            android:textDirection="rtl"
+            android:layout_alignParentRight="true"
             android:editable="false"
             android:focusable="false"
-            />
+            android:textDirection="rtl"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <RelativeLayout

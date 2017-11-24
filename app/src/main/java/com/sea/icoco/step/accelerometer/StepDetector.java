@@ -102,7 +102,6 @@ public class StepDetector implements SensorEventListener {
             }
         }
         gravityOld = values;
-        Log.d(tag,"values="+String.valueOf(values));
     }
 
     /*

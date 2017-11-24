@@ -12,6 +12,7 @@ import com.sea.icoco.Control.Action.ScanerQRCode;
 public class ShopMenuActivity extends AppCompatActivity
 {
     Button register_btn,receive_btn,couponInsert_btn;
+    String scanType = null; //receive | recordLoc;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -38,6 +39,7 @@ public class ShopMenuActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 new IntentIntegrator(ShopMenuActivity.this).setOrientationLocked(false).setCaptureActivity(ScannerActivity.class).initiateScan();
+                scanType = "receive";
             }
         });
 
@@ -47,6 +49,8 @@ public class ShopMenuActivity extends AppCompatActivity
                 startActivity(new Intent(ShopMenuActivity.this,ShopInsertCouponActivity.class));
             }
         });
+
+
     }
 
     private void findView()
@@ -59,12 +63,20 @@ public class ShopMenuActivity extends AppCompatActivity
     //回傳結果 適當修改
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
-        //付款
         //設定進入的介面
-        if (requestCode == 49374 && resultCode == -1)
+        if (requestCode == 49374 && resultCode == -1) // for zxing qrcode scan
         {
-            ScanerQRCode scanerQRCode = new ScanerQRCode(requestCode,resultCode,intent,this,ShopReceiveActivity.class);
-            scanerQRCode.getContextResult();
+            switch (scanType){
+                ScanerQRCode scanerQRCode;
+                case "receive":
+                    scanerQRCode = new ScanerQRCode(requestCode,resultCode,intent,this,ShopReceiveActivity.class);
+                    scanerQRCode.getContextResult();
+                    break;
+                case "recordLoc":
+                    scanerQRCode = new ScanerQRCode(requestCode,resultCode,intent,this,ShopReceiveActivity.class);
+                    scanerQRCode.getContextResult();
+                    break;
+            }
         }
     }
 }

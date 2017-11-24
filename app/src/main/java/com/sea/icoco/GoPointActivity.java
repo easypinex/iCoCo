@@ -48,7 +48,7 @@ public class GoPointActivity extends AppCompatActivity {
         sp = new SharedPreferencesUtils(this);
         //获取用户设置的计划锻炼步數，没有设置过的话默认7000
         String planWalk_QTY = (String) sp.getParam("planWalk_QTY", "20");
-        point_text.setText(dataControler.userData.getBonusPoint());
+        point_text.setText(dataControler.userData.getBonusPoint()+"點");
         //设置当前步數为0
         stepArcView.setCurrentCount(Integer.parseInt(planWalk_QTY), 0);
 //        tv_isSupport.setText("计步中...");
@@ -85,14 +85,14 @@ public class GoPointActivity extends AppCompatActivity {
             stepService.registerCallback(new UpdateUiCallBack() {
                 @Override
                 public void updateUi(int stepCount) {
-                    speed_txv.setText(new DecimalFormat("#.##").format(dataControler.gpsData.getSpeed()));
+                    if (dataControler.gpsData.isSpeedLimit()) speed_txv.setText(new DecimalFormat("#.##").format(dataControler.gpsData.getSpeed()));
                     if ((dataControler.gpsData.isKeepGoing() && dataControler.gpsData.getSpeed() <= 20.0) || !dataControler.gpsData.isSpeedLimit()){
                         Integer planWalk_QTY = Integer.parseInt((String) sp.getParam("planWalk_QTY", "20"));
                         if (stepCount >= planWalk_QTY){
                             stepService.setStepCount(stepCount-planWalk_QTY);
                             stepArcView.setCurrentCount(20,stepCount-planWalk_QTY);
                             dataControler.userData.setBonusPoint(Integer.parseInt(dataControler.userData.getBonusPoint())+1);
-                            point_text.setText(dataControler.userData.getBonusPoint());
+                            point_text.setText(dataControler.userData.getBonusPoint()+"點");
                         }
                         else{
                             stepArcView.setCurrentCount(planWalk_QTY, stepCount);

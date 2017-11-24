@@ -43,7 +43,7 @@ public class gpsData
     boolean keepGoing = false;
     int notGoingCount = 0;
     Double speed = 0.0;
-    boolean speedLimit = true;
+    boolean speedLimit = false;
     public void loadGpsData(Context context)
     {
         this.context = context;

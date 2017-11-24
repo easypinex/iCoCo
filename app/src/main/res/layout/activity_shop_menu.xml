@@ -36,4 +36,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/couponInsert_btn" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/receive_btn"
+        android:layout_below="@+id/receive_btn"
+        android:layout_marginTop="89dp"
+        android:text="觀光集點" />
 </RelativeLayout>
